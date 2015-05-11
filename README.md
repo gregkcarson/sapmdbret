@@ -1,0 +1,8 @@
+# sapmdbret
+This is a functional proof of concept program to aid in exploiting systems vulnerable to CVE 2008-0244.  
+
+This vulnerability specifically relates to issues in how the SAP MaxDB protocol handles specially crafted packets.  It is possible to execute system level commands remotely.
+
+Please note that some values (such as attacker IP, and the commands being executed) are hard-coded.  This was designed as a PoC and thus some conveniences are not afforded to the end user.  Review the code in detail to understand specifically what is transpiring.
+
+Usage: python sapmdbret.py TARGETIP PORT
